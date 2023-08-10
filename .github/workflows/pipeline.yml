@@ -27,7 +27,15 @@ jobs:
         cache: 'npm'
     - name: Instaling NPM
       run: npm install
+
     - name: Running Unit Tests
       run: npm run test:unit
+
     - name: Display user name
       run: echo "Yolov.Detelin"
+
+    - name: Deploy to production
+      uses: johnbeynon/render-deploy-action@v0.0.8
+      with:
+        service-id: ${{ secrets.SERVICE_ID }}
+        api-key: ${{ secrets.API_KEY }}
